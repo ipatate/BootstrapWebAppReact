@@ -41,7 +41,8 @@ const config = {
     plugins: [
         new webpack.ProgressPlugin(),
         new HtmlWebpackPlugin({
-          template: 'src/assets/index.html'
+          template: 'src/assets/index.html',
+          favicon: 'src/assets/favicon.ico'
         })
     ]
 }
