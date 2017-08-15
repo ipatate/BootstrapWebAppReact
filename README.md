@@ -34,3 +34,13 @@ Used dependencies:
     $ npm run build:prod
 
 The build result is in dist directory.
+
+
+### Start script
+
+    $ npm start
+
+The project use serve for serving app.
+
+You can use [https://bootstrap-app-hbyunjxnqg.now.sh](now) for test online.
+Free account available.
