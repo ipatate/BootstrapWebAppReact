@@ -8,6 +8,8 @@ class Home extends React.Component {
   constructor(props: {}) {
     super(props);
     this.store = Store;
+  }
+  componentWillMount() {
     if (this.store.posts.length < 1) {
       try {
         syncPosts();

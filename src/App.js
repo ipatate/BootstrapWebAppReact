@@ -1,6 +1,7 @@
 // @flow
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { BrowserRouter, Route, HashRouter } from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory';
 import { Switch } from 'react-router';
 import { ThemeProvider } from 'styled-components';
 import { Provider } from 'mobx-react';
@@ -12,18 +13,22 @@ import reset from './styles/reset'; // eslint-disable-line
 import theme from './styles/theme';
 import Header from './components/Header';
 
+const history = createBrowserHistory();
+
 export default () =>
-  <BrowserRouter>
-    <Provider store={Store}>
-      <ThemeProvider theme={theme}>
-        <div>
-          <Header />
-          <Switch>
-            <Route exact path="/" component={Home} />
-            <Route path="/post/:id" component={ShowPost} />
-            <Route component={NoMatch} />
-          </Switch>
-        </div>
-      </ThemeProvider>
-    </Provider>
+  <BrowserRouter history={history}>
+    <HashRouter>
+      <Provider store={Store}>
+        <ThemeProvider theme={theme}>
+          <div>
+            <Header />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              <Route path="/post/:id" component={ShowPost} />
+              <Route component={NoMatch} />
+            </Switch>
+          </div>
+        </ThemeProvider>
+      </Provider>
+    </HashRouter>
   </BrowserRouter>;

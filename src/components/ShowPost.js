@@ -8,7 +8,7 @@ type Props = {
   post: Object,
   history: Object,
   location: Object,
-  match: Object
+  match: Object,
 };
 
 class ShowPost extends React.Component {
@@ -16,7 +16,7 @@ class ShowPost extends React.Component {
     super(props);
     this.store = Store;
   }
-  componentDidMount() {
+  componentWillMount() {
     const id = this.props.match.params.id;
     if (id) {
       try {

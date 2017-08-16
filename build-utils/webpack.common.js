@@ -1,13 +1,14 @@
 const commonPath = require('./common-paths');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const PreloadWebpackPlugin = require('preload-webpack-plugin');
 
 const config = {
   entry: './src/index',
   output: {
     filename: '[hash].bundle.js',
     path: commonPath.outputPath,
-    publicPath: '/'
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -15,11 +16,11 @@ const config = {
         enforce: 'pre',
         test: /\.jsx?$/,
         loader: 'eslint-loader',
-        exclude: /node_modules/
+        exclude: /node_modules/,
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
       {
         test: /\.png/,
@@ -27,25 +28,29 @@ const config = {
           {
             loader: 'url-loader',
             options: {
-              limit: 10000
-            }
-          }
-        ]
-      }
-    ]
+              limit: 10000,
+            },
+          },
+        ],
+      },
+    ],
   },
   stats: {
     colors: true,
     reasons: true,
-    chunks: true
+    chunks: true,
   },
   plugins: [
     new webpack.ProgressPlugin(),
     new HtmlWebpackPlugin({
       template: 'src/assets/index.html',
-      favicon: 'src/assets/favicon.ico'
-    })
-  ]
+      favicon: 'src/assets/favicon.ico',
+    }),
+    new PreloadWebpackPlugin({
+      rel: 'prefetch',
+      include: 'all',
+    }),
+  ],
 };
 
 module.exports = config;
