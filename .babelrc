@@ -1,29 +1,29 @@
 {
   "presets": [
     "react",
-		["env", {
-			"targets": {
-				"browsers": "last 2 versions"
-			},
-			"loose": true,
-			"modules": false
-		}]
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": "last 2 versions"
+        },
+        "loose": true,
+        "modules": false
+      }
+    ]
   ],
   "plugins": [
     "transform-decorators-legacy",
+    "transform-class-properties",
     "transform-flow-strip-types",
     "babel-plugin-inline-react-svg",
     ["styled-components"]
   ],
   "env": {
     "test": {
-      "plugins": [
-        "transform-es2015-modules-commonjs"
-      ]
+      "plugins": ["transform-es2015-modules-commonjs"]
     },
-    "development": {
-    },
-    "production": {
-    }
+    "development": {},
+    "production": {}
   }
 }
