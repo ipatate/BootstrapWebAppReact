@@ -3,14 +3,14 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     contentBase: './',
-    hot: true,
+    hot: true
   },
   module: {
     rules: [
       {
         test: /\.css/,
-        use: ['style-loader', 'css-loader'],
-      },
-    ],
-  },
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
 };
